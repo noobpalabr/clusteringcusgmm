@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Cluster Customer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cek Cluster Customer</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="cust_id">CustomerID</label>
+                <input type="text" id="cust_id" name="cust_id" required>
+            </div>
+            <div class="form-group">
+                <label for="balance">Balance</label>
+                <input type="number" id="balance" name="balance" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="purchases">Purchase</label>
+                <input type="number" id="purchases" name="purchases" step="0.01" required>
+            </div>
+            <button type="submit">Cek</button>
+        </form>
+        {% if result %}
+        <div id="result">
+            <label>Hasil</label>
+            <div class="result-box">{{ result }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
